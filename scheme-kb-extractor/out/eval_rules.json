@@ -1,0 +1,398 @@
+{
+  "n_fields": 40,
+  "accuracy": 0.85,
+  "dangerous_error_rate": 0.0,
+  "safe_error_rate": 0.15,
+  "high_stakes_accuracy": 0.75,
+  "high_stakes_dangerous_rate": 0.0,
+  "outcomes": {
+    "correct": 29,
+    "conflict_caught": 3,
+    "correct_empty": 2,
+    "missed": 6
+  },
+  "per_field": {
+    "scheme_name": {
+      "n": 4,
+      "accuracy": 1.0,
+      "dangerous": 0,
+      "safe_errors": 0
+    },
+    "department": {
+      "n": 4,
+      "accuracy": 1.0,
+      "dangerous": 0,
+      "safe_errors": 0
+    },
+    "benefit_type": {
+      "n": 4,
+      "accuracy": 1.0,
+      "dangerous": 0,
+      "safe_errors": 0
+    },
+    "benefit_amount": {
+      "n": 4,
+      "accuracy": 0.75,
+      "dangerous": 0,
+      "safe_errors": 1
+    },
+    "benefit_frequency": {
+      "n": 4,
+      "accuracy": 0.75,
+      "dangerous": 0,
+      "safe_errors": 1
+    },
+    "eligibility": {
+      "n": 4,
+      "accuracy": 0.75,
+      "dangerous": 0,
+      "safe_errors": 1
+    },
+    "documents_required": {
+      "n": 4,
+      "accuracy": 0.75,
+      "dangerous": 0,
+      "safe_errors": 1
+    },
+    "how_to_apply": {
+      "n": 4,
+      "accuracy": 0.75,
+      "dangerous": 0,
+      "safe_errors": 1
+    },
+    "deadline": {
+      "n": 4,
+      "accuracy": 0.75,
+      "dangerous": 0,
+      "safe_errors": 1
+    },
+    "official_link": {
+      "n": 4,
+      "accuracy": 1.0,
+      "dangerous": 0,
+      "safe_errors": 0
+    }
+  },
+  "rows": [
+    {
+      "scheme_ref": "SCH001",
+      "field": "scheme_name",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.95
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "department",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.95
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "benefit_type",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.8
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "benefit_amount",
+      "outcome": "conflict_caught",
+      "pred_status": "conflict",
+      "gold_status": "conflict",
+      "confidence": 0.3
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "benefit_frequency",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.9
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "eligibility",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.9
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "documents_required",
+      "outcome": "conflict_caught",
+      "pred_status": "conflict",
+      "gold_status": "conflict",
+      "confidence": 0.3
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "how_to_apply",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.9
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "deadline",
+      "outcome": "conflict_caught",
+      "pred_status": "conflict",
+      "gold_status": "conflict",
+      "confidence": 0.3
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "official_link",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.95
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "scheme_name",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.8
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "department",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.9
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "benefit_type",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.75
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "benefit_amount",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.9
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "benefit_frequency",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.85
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "eligibility",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.85
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "documents_required",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.85
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "how_to_apply",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.85
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "deadline",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.8
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "official_link",
+      "outcome": "correct_empty",
+      "pred_status": "not_found",
+      "gold_status": "not_found",
+      "confidence": 0.0
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "scheme_name",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.5
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "department",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.5
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "benefit_type",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.5
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "benefit_amount",
+      "outcome": "missed",
+      "pred_status": "not_found",
+      "gold_status": "conflict",
+      "confidence": 0.0
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "benefit_frequency",
+      "outcome": "missed",
+      "pred_status": "not_found",
+      "gold_status": "found",
+      "confidence": 0.0
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "eligibility",
+      "outcome": "missed",
+      "pred_status": "not_found",
+      "gold_status": "found",
+      "confidence": 0.0
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "documents_required",
+      "outcome": "missed",
+      "pred_status": "not_found",
+      "gold_status": "found",
+      "confidence": 0.0
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "how_to_apply",
+      "outcome": "missed",
+      "pred_status": "not_found",
+      "gold_status": "found",
+      "confidence": 0.0
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "deadline",
+      "outcome": "missed",
+      "pred_status": "not_found",
+      "gold_status": "found",
+      "confidence": 0.0
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "official_link",
+      "outcome": "correct_empty",
+      "pred_status": "not_found",
+      "gold_status": "not_found",
+      "confidence": 0.0
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "scheme_name",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.95
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "department",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.95
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "benefit_type",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.8
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "benefit_amount",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.5
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "benefit_frequency",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.5
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "eligibility",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.85
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "documents_required",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.85
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "how_to_apply",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.85
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "deadline",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.75
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "official_link",
+      "outcome": "correct",
+      "pred_status": "found",
+      "gold_status": "found",
+      "confidence": 0.5
+    }
+  ]
+}

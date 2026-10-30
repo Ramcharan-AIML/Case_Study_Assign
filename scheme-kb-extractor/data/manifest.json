@@ -1,0 +1,29 @@
+{
+  "_note": "Which sources belong to which scheme. 'primary' = issued by the department; 'secondary' = catalogue (MyScheme). All links are placeholders; none are real.",
+  "sources": [
+    {"source_ref": "SRC-001-A", "scheme_ref": "SCH001", "path": "sources/SCH001_pension_notification_en.pdf", "kind": "pdf", "authority": "primary", "language": "en",
+     "title": "Notification SJE/PEN/2026/114 (synthetic)", "published_on": "2026-03-12", "captured_at": "2026-10-28",
+     "link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf"},
+    {"source_ref": "SRC-001-M", "scheme_ref": "SCH001", "path": "myscheme/SCH001.json", "kind": "myscheme", "authority": "secondary", "language": "en",
+     "title": "MyScheme listing snapshot (synthetic)", "published_on": "2025-11-02", "captured_at": "2026-10-28",
+     "link": "synthetic://myscheme/vriddha-samman-pension"},
+
+    {"source_ref": "SRC-002-A", "scheme_ref": "SCH002", "path": "sources/SCH002_girl_education_dept_page_hi.html", "kind": "html", "authority": "primary", "language": "hi",
+     "title": "School Education Dept scheme page (synthetic)", "published_on": "2026-08-05", "captured_at": "2026-10-28",
+     "link": "synthetic://vindhyachal/school-edu/balika-shiksha"},
+
+    {"source_ref": "SRC-003-A", "scheme_ref": "SCH003", "path": "sources/SCH003_widow_assistance_scan_mr.pdf", "kind": "pdf", "authority": "primary", "language": "mr",
+     "title": "Circular WCD/2026/47 - scanned (synthetic)", "published_on": "2026-07-20", "captured_at": "2026-10-28",
+     "link": "synthetic://vindhyachal/wcd/circular-2026-47-scan.pdf"},
+    {"source_ref": "SRC-003-M", "scheme_ref": "SCH003", "path": "myscheme/SCH003.json", "kind": "myscheme", "authority": "secondary", "language": "en",
+     "title": "MyScheme listing snapshot (synthetic)", "published_on": "2025-06-15", "captured_at": "2026-10-28",
+     "link": "synthetic://myscheme/niradhar-vidhwa"},
+
+    {"source_ref": "SRC-004-A", "scheme_ref": "SCH004", "path": "sources/SCH004_maternal_nutrition_press_note_en.txt", "kind": "text", "authority": "primary", "language": "en",
+     "title": "Press note, 02 Sep 2026 (synthetic)", "published_on": "2026-09-02", "captured_at": "2026-10-28",
+     "link": "synthetic://vindhyachal/wcd/press-note-2026-09-02"},
+    {"source_ref": "SRC-004-M", "scheme_ref": "SCH004", "path": "myscheme/SCH004.json", "kind": "myscheme", "authority": "secondary", "language": "en",
+     "title": "MyScheme listing snapshot (synthetic)", "published_on": "2026-09-20", "captured_at": "2026-10-28",
+     "link": "synthetic://myscheme/matru-poshan"}
+  ]
+}

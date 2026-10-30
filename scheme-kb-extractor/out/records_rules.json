@@ -1,0 +1,1187 @@
+{
+  "SCH001": [
+    {
+      "scheme_ref": "SCH001",
+      "field": "scheme_name",
+      "value": "Vriddha Samman Pension Yojana",
+      "evidence": [
+        {
+          "quote": "Vriddha Samman Pension Yojana",
+          "location": "page 1, line 5",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Vriddha Samman Pension Yojana",
+          "location": "MyScheme listing, section 'Scheme name'",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.95,
+      "status": "found",
+      "note": "Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "department",
+      "value": "Department of Social Justice and Empowerment",
+      "evidence": [
+        {
+          "quote": "Department of Social Justice and Empowerment",
+          "location": "page 1, line 2",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Department of Social Justice and Empowerment",
+          "location": "MyScheme listing, section 'Ministry / Department'",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.95,
+      "status": "found",
+      "note": "Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "benefit_type",
+      "value": "cash",
+      "evidence": [
+        {
+          "quote": "Monthly pension of Rs. 1,500 (Rupees One Thousand Five Hundred only) per month,",
+          "location": "page 1, line 7",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "credited by DBT to the beneficiary's Aadhaar-seeded bank account.",
+          "location": "page 1, line 8",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "This revises the earlier assistance of Rs. 1,000 per month with effect from 01.04.2026.",
+          "location": "page 1, line 9",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Monthly pension of ₹1,000 per month credited to the beneficiary's bank account through DBT.",
+          "location": "MyScheme listing, section 'Benefits'",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.8,
+      "status": "found",
+      "note": "[SRC-001-A] Classified from wording: 'pension'. [SRC-001-M] Classified from wording: 'pension'. Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "benefit_amount",
+      "value": null,
+      "evidence": [
+        {
+          "quote": "Monthly pension of Rs. 1,500 (Rupees One Thousand Five Hundred only) per month,",
+          "location": "page 1, line 7",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Monthly pension of ₹1,000 per month credited to the beneficiary's bank account through DBT.",
+          "location": "MyScheme listing, section 'Benefits'",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.3,
+      "status": "conflict",
+      "note": "Sources disagree; not auto-resolved. 1500 from SRC-001-A (primary, published 2026-03-12) vs 1000 from SRC-001-M (secondary, published 2025-11-02). Reviewer hint: the most recently published source is SRC-001-A.",
+      "candidates": [
+        {
+          "value": 1500,
+          "evidence": [
+            {
+              "quote": "Monthly pension of Rs. 1,500 (Rupees One Thousand Five Hundred only) per month,",
+              "location": "page 1, line 7",
+              "source_ref": "SRC-001-A",
+              "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+              "captured_at": "2026-10-28"
+            }
+          ],
+          "confidence": 0.9,
+          "source_ref": "SRC-001-A",
+          "authority": "primary",
+          "note": "Ignored other amounts: Rs 1000 (preceded by 'revises')."
+        },
+        {
+          "value": 1000,
+          "evidence": [
+            {
+              "quote": "Monthly pension of ₹1,000 per month credited to the beneficiary's bank account through DBT.",
+              "location": "MyScheme listing, section 'Benefits'",
+              "source_ref": "SRC-001-M",
+              "source_link": "synthetic://myscheme/vriddha-samman-pension",
+              "captured_at": "2026-10-28"
+            }
+          ],
+          "confidence": 0.9,
+          "source_ref": "SRC-001-M",
+          "authority": "secondary",
+          "note": null
+        }
+      ],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "benefit_frequency",
+      "value": "monthly",
+      "evidence": [
+        {
+          "quote": "Monthly pension of Rs. 1,500 (Rupees One Thousand Five Hundred only) per month,",
+          "location": "page 1, line 7",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Monthly pension of ₹1,000 per month credited to the beneficiary's bank account through DBT.",
+          "location": "MyScheme listing, section 'Benefits'",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "found",
+      "note": "[SRC-001-A] Matched 'Monthly'. [SRC-001-M] Matched 'Monthly'. Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "eligibility",
+      "value": [
+        "Resident of Vindhyachal for at least 10 years.",
+        "Age 60 years or above.",
+        "Annual family income not exceeding Rs. 1,20,000.",
+        "Not receiving any other government pension."
+      ],
+      "evidence": [
+        {
+          "quote": "a. Resident of Vindhyachal for at least 10 years.",
+          "location": "page 1, line 11",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "b. Age 60 years or above.",
+          "location": "page 1, line 12",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "c. Annual family income not exceeding Rs. 1,20,000.",
+          "location": "page 1, line 13",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "d. Not receiving any other government pension.",
+          "location": "page 1, line 14",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Resident of Vindhyachal for at least 10 years.",
+          "location": "MyScheme listing, section 'Eligibility', item 1",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Age 60 years or above.",
+          "location": "MyScheme listing, section 'Eligibility', item 2",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Annual family income not exceeding Rs. 1,20,000.",
+          "location": "MyScheme listing, section 'Eligibility', item 3",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Not receiving any other government pension.",
+          "location": "MyScheme listing, section 'Eligibility', item 4",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "found",
+      "note": "Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "documents_required",
+      "value": null,
+      "evidence": [
+        {
+          "quote": "a. Aadhaar card",
+          "location": "page 2, line 2",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "b. Age proof (birth certificate / school leaving certificate / voter ID)",
+          "location": "page 2, line 3",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "c. Income certificate issued by Tehsildar",
+          "location": "page 2, line 4",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "d. Domicile certificate",
+          "location": "page 2, line 5",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "e. Bank passbook (first page)",
+          "location": "page 2, line 6",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Aadhaar card",
+          "location": "MyScheme listing, section 'Documents Required', item 1",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Age proof (birth certificate / school leaving certificate / voter ID)",
+          "location": "MyScheme listing, section 'Documents Required', item 2",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Income certificate issued by Tehsildar",
+          "location": "MyScheme listing, section 'Documents Required', item 3",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Bank passbook (first page)",
+          "location": "MyScheme listing, section 'Documents Required', item 4",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.3,
+      "status": "conflict",
+      "note": "Sources disagree; not auto-resolved. ['Aadhaar card', 'Age proof (birth certificate / school leaving certificate / voter ID)', 'Income certificate issued by Tehsildar', 'Domicile certificate', 'Bank passbook (first page)'] from SRC-001-A (primary, published 2026-03-12) vs ['Aadhaar card', 'Age proof (birth certificate / school leaving certificate / voter ID)', 'Income certificate issued by Tehsildar', 'Bank passbook (first page)'] from SRC-001-M (secondary, published 2025-11-02). Reviewer hint: the most recently published source is SRC-001-A.",
+      "candidates": [
+        {
+          "value": [
+            "Aadhaar card",
+            "Age proof (birth certificate / school leaving certificate / voter ID)",
+            "Income certificate issued by Tehsildar",
+            "Domicile certificate",
+            "Bank passbook (first page)"
+          ],
+          "evidence": [
+            {
+              "quote": "a. Aadhaar card",
+              "location": "page 2, line 2",
+              "source_ref": "SRC-001-A",
+              "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+              "captured_at": "2026-10-28"
+            },
+            {
+              "quote": "b. Age proof (birth certificate / school leaving certificate / voter ID)",
+              "location": "page 2, line 3",
+              "source_ref": "SRC-001-A",
+              "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+              "captured_at": "2026-10-28"
+            },
+            {
+              "quote": "c. Income certificate issued by Tehsildar",
+              "location": "page 2, line 4",
+              "source_ref": "SRC-001-A",
+              "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+              "captured_at": "2026-10-28"
+            },
+            {
+              "quote": "d. Domicile certificate",
+              "location": "page 2, line 5",
+              "source_ref": "SRC-001-A",
+              "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+              "captured_at": "2026-10-28"
+            },
+            {
+              "quote": "e. Bank passbook (first page)",
+              "location": "page 2, line 6",
+              "source_ref": "SRC-001-A",
+              "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+              "captured_at": "2026-10-28"
+            }
+          ],
+          "confidence": 0.85,
+          "source_ref": "SRC-001-A",
+          "authority": "primary",
+          "note": null
+        },
+        {
+          "value": [
+            "Aadhaar card",
+            "Age proof (birth certificate / school leaving certificate / voter ID)",
+            "Income certificate issued by Tehsildar",
+            "Bank passbook (first page)"
+          ],
+          "evidence": [
+            {
+              "quote": "Aadhaar card",
+              "location": "MyScheme listing, section 'Documents Required', item 1",
+              "source_ref": "SRC-001-M",
+              "source_link": "synthetic://myscheme/vriddha-samman-pension",
+              "captured_at": "2026-10-28"
+            },
+            {
+              "quote": "Age proof (birth certificate / school leaving certificate / voter ID)",
+              "location": "MyScheme listing, section 'Documents Required', item 2",
+              "source_ref": "SRC-001-M",
+              "source_link": "synthetic://myscheme/vriddha-samman-pension",
+              "captured_at": "2026-10-28"
+            },
+            {
+              "quote": "Income certificate issued by Tehsildar",
+              "location": "MyScheme listing, section 'Documents Required', item 3",
+              "source_ref": "SRC-001-M",
+              "source_link": "synthetic://myscheme/vriddha-samman-pension",
+              "captured_at": "2026-10-28"
+            },
+            {
+              "quote": "Bank passbook (first page)",
+              "location": "MyScheme listing, section 'Documents Required', item 4",
+              "source_ref": "SRC-001-M",
+              "source_link": "synthetic://myscheme/vriddha-samman-pension",
+              "captured_at": "2026-10-28"
+            }
+          ],
+          "confidence": 0.85,
+          "source_ref": "SRC-001-M",
+          "authority": "secondary",
+          "note": null
+        }
+      ],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "how_to_apply",
+      "value": [
+        "Apply online at the Social Justice portal or at the nearest Common Service Centre (CSC).",
+        "The application is verified by the Block Social Welfare Officer within 30 days."
+      ],
+      "evidence": [
+        {
+          "quote": "a. Apply online at the Social Justice portal or at the nearest Common Service Centre (CSC).",
+          "location": "page 2, line 8",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "b. The application is verified by the Block Social Welfare Officer within 30 days.",
+          "location": "page 2, line 9",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Apply online at the Social Justice portal or at the nearest Common Service Centre (CSC).",
+          "location": "MyScheme listing, section 'Application Process', item 1",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "The application is verified by the Block Social Welfare Officer within 30 days.",
+          "location": "MyScheme listing, section 'Application Process', item 2",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "found",
+      "note": "Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "deadline",
+      "value": null,
+      "evidence": [
+        {
+          "quote": "Applications for the year 2026-27 must be submitted by 30 June 2026.",
+          "location": "page 2, line 10",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Last date to apply: 31 March 2026",
+          "location": "MyScheme listing, section 'Deadline'",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.3,
+      "status": "conflict",
+      "note": "Sources disagree; not auto-resolved. '2026-06-30' from SRC-001-A (primary, published 2026-03-12) vs '2026-03-31' from SRC-001-M (secondary, published 2025-11-02). Reviewer hint: the most recently published source is SRC-001-A.",
+      "candidates": [
+        {
+          "value": "2026-06-30",
+          "evidence": [
+            {
+              "quote": "Applications for the year 2026-27 must be submitted by 30 June 2026.",
+              "location": "page 2, line 10",
+              "source_ref": "SRC-001-A",
+              "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+              "captured_at": "2026-10-28"
+            }
+          ],
+          "confidence": 0.9,
+          "source_ref": "SRC-001-A",
+          "authority": "primary",
+          "note": null
+        },
+        {
+          "value": "2026-03-31",
+          "evidence": [
+            {
+              "quote": "Last date to apply: 31 March 2026",
+              "location": "MyScheme listing, section 'Deadline'",
+              "source_ref": "SRC-001-M",
+              "source_link": "synthetic://myscheme/vriddha-samman-pension",
+              "captured_at": "2026-10-28"
+            }
+          ],
+          "confidence": 0.9,
+          "source_ref": "SRC-001-M",
+          "authority": "secondary",
+          "note": null
+        }
+      ],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH001",
+      "field": "official_link",
+      "value": "https://sje.vindhyachal.example/vsp",
+      "evidence": [
+        {
+          "quote": "https://sje.vindhyachal.example/vsp",
+          "location": "page 2, line 11",
+          "source_ref": "SRC-001-A",
+          "source_link": "synthetic://vindhyachal/sje/notification-SJE-PEN-2026-114.pdf",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "https://sje.vindhyachal.example/vsp",
+          "location": "MyScheme listing, section 'Official link'",
+          "source_ref": "SRC-001-M",
+          "source_link": "synthetic://myscheme/vriddha-samman-pension",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.95,
+      "status": "found",
+      "note": "Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    }
+  ],
+  "SCH002": [
+    {
+      "scheme_ref": "SCH002",
+      "field": "scheme_name",
+      "value": "मुख्यमंत्री बालिका शिक्षा प्रोत्साहन योजना",
+      "evidence": [
+        {
+          "quote": "मुख्यमंत्री बालिका शिक्षा प्रोत्साहन योजना",
+          "location": "heading <h1> 'मुख्यमंत्री बालिका शिक्षा प्रोत्साहन योजना'",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.8,
+      "status": "found",
+      "note": "[SRC-002-A] Taken from the page's main heading.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "department",
+      "value": "स्कूल शिक्षा विभाग, विंध्याचल सरकार (काल्पनिक)",
+      "evidence": [
+        {
+          "quote": "स्कूल शिक्षा विभाग, विंध्याचल सरकार (काल्पनिक)",
+          "location": "section 'मुख्यमंत्री बालिका शिक्षा प्रोत्साहन योजना', item 1",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "found",
+      "note": null,
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "benefit_type",
+      "value": "cash",
+      "evidence": [
+        {
+          "quote": "कक्षा 9 में प्रवेश लेने वाली प्रत्येक छात्रा को ₹ १०,००० (दस हज़ार रुपये) की एकमुश्त प्रोत्साहन राशि सीधे बैंक खाते में दी जाएगी।",
+          "location": "section 'लाभ', item 1",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.75,
+      "status": "found",
+      "note": "[SRC-002-A] Classified from wording: '₹'.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "benefit_amount",
+      "value": 10000,
+      "evidence": [
+        {
+          "quote": "कक्षा 9 में प्रवेश लेने वाली प्रत्येक छात्रा को ₹ १०,००० (दस हज़ार रुपये) की एकमुश्त प्रोत्साहन राशि सीधे बैंक खाते में दी जाएगी।",
+          "location": "section 'लाभ', item 1",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.9,
+      "status": "found",
+      "note": null,
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "benefit_frequency",
+      "value": "one_time",
+      "evidence": [
+        {
+          "quote": "कक्षा 9 में प्रवेश लेने वाली प्रत्येक छात्रा को ₹ १०,००० (दस हज़ार रुपये) की एकमुश्त प्रोत्साहन राशि सीधे बैंक खाते में दी जाएगी।",
+          "location": "section 'लाभ', item 1",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "found",
+      "note": "[SRC-002-A] Matched 'एकमुश्त'.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "eligibility",
+      "value": [
+        "छात्रा विंध्याचल की मूल निवासी हो।",
+        "सरकारी या अनुदान प्राप्त विद्यालय में कक्षा 9 में नियमित प्रवेश।",
+        "परिवार की वार्षिक आय ₹ २,५०,००० से अधिक न हो।"
+      ],
+      "evidence": [
+        {
+          "quote": "छात्रा विंध्याचल की मूल निवासी हो।",
+          "location": "section 'पात्रता', item 1",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "सरकारी या अनुदान प्राप्त विद्यालय में कक्षा 9 में नियमित प्रवेश।",
+          "location": "section 'पात्रता', item 2",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "परिवार की वार्षिक आय ₹ २,५०,००० से अधिक न हो।",
+          "location": "section 'पात्रता', item 3",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "found",
+      "note": null,
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "documents_required",
+      "value": [
+        "आधार कार्ड",
+        "मूल निवास प्रमाण पत्र",
+        "आय प्रमाण पत्र",
+        "विद्यालय प्रवेश प्रमाण पत्र",
+        "बैंक पासबुक"
+      ],
+      "evidence": [
+        {
+          "quote": "आधार कार्ड",
+          "location": "section 'आवश्यक दस्तावेज़', item 1",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "मूल निवास प्रमाण पत्र",
+          "location": "section 'आवश्यक दस्तावेज़', item 2",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "आय प्रमाण पत्र",
+          "location": "section 'आवश्यक दस्तावेज़', item 3",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "विद्यालय प्रवेश प्रमाण पत्र",
+          "location": "section 'आवश्यक दस्तावेज़', item 4",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "बैंक पासबुक",
+          "location": "section 'आवश्यक दस्तावेज़', item 5",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "found",
+      "note": null,
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "how_to_apply",
+      "value": [
+        "विद्यालय के प्रधानाचार्य के माध्यम से आवेदन पत्र जमा करें।",
+        "प्रधानाचार्य आवेदन को ज़िला शिक्षा अधिकारी को अग्रेषित करेंगे।"
+      ],
+      "evidence": [
+        {
+          "quote": "विद्यालय के प्रधानाचार्य के माध्यम से आवेदन पत्र जमा करें।",
+          "location": "section 'आवेदन कैसे करें', item 1",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "प्रधानाचार्य आवेदन को ज़िला शिक्षा अधिकारी को अग्रेषित करेंगे।",
+          "location": "section 'आवेदन कैसे करें', item 2",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "found",
+      "note": null,
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "deadline",
+      "value": "No fixed deadline (open throughout the year)",
+      "evidence": [
+        {
+          "quote": "इस योजना के लिए आवेदन पूरे वर्ष खुले रहते हैं।",
+          "location": "section 'अंतिम तिथि', item 1",
+          "source_ref": "SRC-002-A",
+          "source_link": "synthetic://vindhyachal/school-edu/balika-shiksha",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.8,
+      "status": "found",
+      "note": null,
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH002",
+      "field": "official_link",
+      "value": null,
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "not_found",
+      "note": "[SRC-002-A] No URL stated in the source. The address the page was captured from is not assumed to be the application link.",
+      "candidates": [],
+      "extractor": "rules"
+    }
+  ],
+  "SCH003": [
+    {
+      "scheme_ref": "SCH003",
+      "field": "scheme_name",
+      "value": "Niradhar Vidhwa Arthsahayya Yojana",
+      "evidence": [
+        {
+          "quote": "Niradhar Vidhwa Arthsahayya Yojana",
+          "location": "MyScheme listing, section 'Scheme name'",
+          "source_ref": "SRC-003-M",
+          "source_link": "synthetic://myscheme/niradhar-vidhwa",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.5,
+      "status": "found",
+      "note": "Only the MyScheme listing states this; the official source is silent or unreadable. Verify against an official document before approving. [SRC-003-A] silent: Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "department",
+      "value": "Women and Child Development Department",
+      "evidence": [
+        {
+          "quote": "Women and Child Development Department",
+          "location": "MyScheme listing, section 'Ministry / Department'",
+          "source_ref": "SRC-003-M",
+          "source_link": "synthetic://myscheme/niradhar-vidhwa",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.5,
+      "status": "found",
+      "note": "Only the MyScheme listing states this; the official source is silent or unreadable. Verify against an official document before approving. [SRC-003-A] silent: Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "benefit_type",
+      "value": "cash",
+      "evidence": [
+        {
+          "quote": "Financial assistance of ₹1,000 per month to destitute widows, paid to the bank account.",
+          "location": "MyScheme listing, section 'Benefits'",
+          "source_ref": "SRC-003-M",
+          "source_link": "synthetic://myscheme/niradhar-vidhwa",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.5,
+      "status": "found",
+      "note": "Only the MyScheme listing states this; the official source is silent or unreadable. Verify against an official document before approving. [SRC-003-M] Classified from wording: 'Financial assistance'. [SRC-003-A] silent: Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "benefit_amount",
+      "value": null,
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "not_found",
+      "note": "Official document could not be read, so this is left empty. MyScheme says 1000 — unverified hint only; check the official document. [SRC-003-A] silent: Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher.",
+      "candidates": [
+        {
+          "value": 1000,
+          "evidence": [
+            {
+              "quote": "Financial assistance of ₹1,000 per month to destitute widows, paid to the bank account.",
+              "location": "MyScheme listing, section 'Benefits'",
+              "source_ref": "SRC-003-M",
+              "source_link": "synthetic://myscheme/niradhar-vidhwa",
+              "captured_at": "2026-10-28"
+            }
+          ],
+          "confidence": 0.9,
+          "source_ref": "SRC-003-M",
+          "authority": "secondary",
+          "note": null
+        }
+      ],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "benefit_frequency",
+      "value": null,
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "not_found",
+      "note": "Official document could not be read, so this is left empty. MyScheme says 'monthly' — unverified hint only; check the official document. [SRC-003-A] silent: Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher.",
+      "candidates": [
+        {
+          "value": "monthly",
+          "evidence": [
+            {
+              "quote": "Financial assistance of ₹1,000 per month to destitute widows, paid to the bank account.",
+              "location": "MyScheme listing, section 'Benefits'",
+              "source_ref": "SRC-003-M",
+              "source_link": "synthetic://myscheme/niradhar-vidhwa",
+              "captured_at": "2026-10-28"
+            }
+          ],
+          "confidence": 0.85,
+          "source_ref": "SRC-003-M",
+          "authority": "secondary",
+          "note": "Matched 'per month'."
+        }
+      ],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "eligibility",
+      "value": null,
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "not_found",
+      "note": "[SRC-003-A] Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher. | [SRC-003-M] No 'eligibility' section found.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "documents_required",
+      "value": null,
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "not_found",
+      "note": "[SRC-003-A] Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher. | [SRC-003-M] No 'documents required' section found.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "how_to_apply",
+      "value": null,
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "not_found",
+      "note": "[SRC-003-A] Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher. | [SRC-003-M] No 'how to apply' section found.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "deadline",
+      "value": null,
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "not_found",
+      "note": "[SRC-003-A] Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher. | [SRC-003-M] No deadline stated.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH003",
+      "field": "official_link",
+      "value": null,
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "not_found",
+      "note": "[SRC-003-A] Source is a scanned image with no text layer. The offline extractor has no OCR, so it returns nothing instead of guessing. Run with --mode llm (vision) or send to a researcher. | [SRC-003-M] No URL stated in the source. The address the page was captured from is not assumed to be the application link.",
+      "candidates": [],
+      "extractor": "rules"
+    }
+  ],
+  "SCH004": [
+    {
+      "scheme_ref": "SCH004",
+      "field": "scheme_name",
+      "value": "Matru Poshan Sahayata Yojana",
+      "evidence": [
+        {
+          "quote": "Matru Poshan Sahayata Yojana",
+          "location": "line 4",
+          "source_ref": "SRC-004-A",
+          "source_link": "synthetic://vindhyachal/wcd/press-note-2026-09-02",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Matru Poshan Sahayata Yojana",
+          "location": "MyScheme listing, section 'Scheme name'",
+          "source_ref": "SRC-004-M",
+          "source_link": "synthetic://myscheme/matru-poshan",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.95,
+      "status": "found",
+      "note": "[SRC-004-A] No 'Scheme name' label; inferred from the headline. Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "department",
+      "value": "Department of Women and Child Development",
+      "evidence": [
+        {
+          "quote": "Department of Women and Child Development",
+          "location": "line 1",
+          "source_ref": "SRC-004-A",
+          "source_link": "synthetic://vindhyachal/wcd/press-note-2026-09-02",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Department of Women and Child Development",
+          "location": "MyScheme listing, section 'Ministry / Department'",
+          "source_ref": "SRC-004-M",
+          "source_link": "synthetic://myscheme/matru-poshan",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.95,
+      "status": "found",
+      "note": "Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "benefit_type",
+      "value": "cash + in-kind",
+      "evidence": [
+        {
+          "quote": "Benefit: Eligible women will receive financial assistance as per the norms prescribed by the Department, along with a nutrition kit at the Anganwadi centre.",
+          "location": "line 8",
+          "source_ref": "SRC-004-A",
+          "source_link": "synthetic://vindhyachal/wcd/press-note-2026-09-02",
+          "captured_at": "2026-10-28"
+        },
+        {
+          "quote": "Financial assistance of ₹5,000 in two instalments and a nutrition kit.",
+          "location": "MyScheme listing, section 'Benefits'",
+          "source_ref": "SRC-004-M",
+          "source_link": "synthetic://myscheme/matru-poshan",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.8,
+      "status": "found",
+      "note": "[SRC-004-A] Classified from wording: 'financial assistance … kit'. [SRC-004-M] Classified from wording: 'Financial assistance … kit'. Corroborated by 2 sources.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "benefit_amount",
+      "value": 5000,
+      "evidence": [
+        {
+          "quote": "Financial assistance of ₹5,000 in two instalments and a nutrition kit.",
+          "location": "MyScheme listing, section 'Benefits'",
+          "source_ref": "SRC-004-M",
+          "source_link": "synthetic://myscheme/matru-poshan",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.5,
+      "status": "found",
+      "note": "Only the MyScheme listing states this; the official source is silent or unreadable. Verify against an official document before approving. [SRC-004-A] silent: Document gives no figure; it says 'as per the norms prescribed by the Department, along with a nutrition kit at the Anganwadi centre'.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "benefit_frequency",
+      "value": "instalments",
+      "evidence": [
+        {
+          "quote": "Financial assistance of ₹5,000 in two instalments and a nutrition kit.",
+          "location": "MyScheme listing, section 'Benefits'",
+          "source_ref": "SRC-004-M",
+          "source_link": "synthetic://myscheme/matru-poshan",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.5,
+      "status": "found",
+      "note": "Only the MyScheme listing states this; the official source is silent or unreadable. Verify against an official document before approving. [SRC-004-M] Matched 'instalments'. [SRC-004-A] silent: No frequency wording (monthly / annual / one-time) in the benefit section.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "eligibility",
+      "value": [
+        "Pregnant women aged 19 years and above registered at an Anganwadi centre, for the first two live births."
+      ],
+      "evidence": [
+        {
+          "quote": "Pregnant women aged 19 years and above registered at an Anganwadi centre, for the first two live births.",
+          "location": "line 10",
+          "source_ref": "SRC-004-A",
+          "source_link": "synthetic://vindhyachal/wcd/press-note-2026-09-02",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "found",
+      "note": "[SRC-004-M] silent: No 'eligibility' section found.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "documents_required",
+      "value": [
+        "Mother and Child Protection (MCP) card",
+        "Aadhaar card",
+        "bank passbook"
+      ],
+      "evidence": [
+        {
+          "quote": "Mother and Child Protection (MCP) card, Aadhaar card, bank passbook.",
+          "location": "line 12",
+          "source_ref": "SRC-004-A",
+          "source_link": "synthetic://vindhyachal/wcd/press-note-2026-09-02",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "found",
+      "note": "[SRC-004-M] silent: No 'documents required' section found.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "how_to_apply",
+      "value": [
+        "Register with the Anganwadi worker of your area."
+      ],
+      "evidence": [
+        {
+          "quote": "Register with the Anganwadi worker of your area.",
+          "location": "line 14",
+          "source_ref": "SRC-004-A",
+          "source_link": "synthetic://vindhyachal/wcd/press-note-2026-09-02",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.85,
+      "status": "found",
+      "note": "[SRC-004-M] silent: No 'how to apply' section found.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "deadline",
+      "value": "Within 270 days of delivery",
+      "evidence": [
+        {
+          "quote": "Applications must be made within 270 days of delivery. Detailed guidelines will be issued separately.",
+          "location": "line 16",
+          "source_ref": "SRC-004-A",
+          "source_link": "synthetic://vindhyachal/wcd/press-note-2026-09-02",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.75,
+      "status": "found",
+      "note": "[SRC-004-A] No 'Last date' label; found deadline wording in the body text. Relative deadline: there is no calendar date to store. [SRC-004-M] silent: No deadline stated.",
+      "candidates": [],
+      "extractor": "rules"
+    },
+    {
+      "scheme_ref": "SCH004",
+      "field": "official_link",
+      "value": "https://wcd.vindhyachal.example/mpsy",
+      "evidence": [
+        {
+          "quote": "https://wcd.vindhyachal.example/mpsy",
+          "location": "MyScheme listing, section 'Official link'",
+          "source_ref": "SRC-004-M",
+          "source_link": "synthetic://myscheme/matru-poshan",
+          "captured_at": "2026-10-28"
+        }
+      ],
+      "confidence": 0.5,
+      "status": "found",
+      "note": "Only the MyScheme listing states this; the official source is silent or unreadable. Verify against an official document before approving. [SRC-004-A] silent: No URL stated in the source. The address the page was captured from is not assumed to be the application link.",
+      "candidates": [],
+      "extractor": "rules"
+    }
+  ]
+}

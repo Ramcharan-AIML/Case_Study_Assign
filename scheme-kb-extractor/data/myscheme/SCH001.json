@@ -1,0 +1,24 @@
+{
+  "_note": "Synthetic snapshot shaped like a MyScheme catalogue page. Deliberately stale: still shows the pre-revision amount and last year's deadline, and omits one document.",
+  "scheme_name": "Vriddha Samman Pension Yojana",
+  "department": "Department of Social Justice and Empowerment",
+  "benefits": "Monthly pension of ₹1,000 per month credited to the beneficiary's bank account through DBT.",
+  "eligibility": [
+    "Resident of Vindhyachal for at least 10 years.",
+    "Age 60 years or above.",
+    "Annual family income not exceeding Rs. 1,20,000.",
+    "Not receiving any other government pension."
+  ],
+  "documents_required": [
+    "Aadhaar card",
+    "Age proof (birth certificate / school leaving certificate / voter ID)",
+    "Income certificate issued by Tehsildar",
+    "Bank passbook (first page)"
+  ],
+  "application_process": [
+    "Apply online at the Social Justice portal or at the nearest Common Service Centre (CSC).",
+    "The application is verified by the Block Social Welfare Officer within 30 days."
+  ],
+  "deadline": "Last date to apply: 31 March 2026",
+  "official_link": "https://sje.vindhyachal.example/vsp"
+}

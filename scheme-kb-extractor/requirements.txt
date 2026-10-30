@@ -1,0 +1,5 @@
+pydantic>=2.6
+pymupdf>=1.24
+pillow>=10.0
+anthropic  # use the latest release: pip install -U anthropic (older SDKs lack output_config/fallbacks)
+pytest>=8.0

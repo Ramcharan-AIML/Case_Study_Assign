@@ -1,0 +1,62 @@
+{
+  "_note": "Hand-checked answers, one entry per scheme field. 'accept' lists other spellings a reviewer would accept. 'conflict' entries list every value that a correct extraction must surface. In production this file grows from reviewer corrections.",
+  "SCH001": {
+    "scheme_name": {"status": "found", "value": "Vriddha Samman Pension Yojana"},
+    "department": {"status": "found", "value": "Department of Social Justice and Empowerment"},
+    "benefit_type": {"status": "found", "value": "cash"},
+    "benefit_amount": {"status": "conflict", "candidates": [1500, 1000]},
+    "benefit_frequency": {"status": "found", "value": "monthly"},
+    "eligibility": {"status": "found", "value": [
+      "Resident of Vindhyachal for at least 10 years.", "Age 60 years or above.",
+      "Annual family income not exceeding Rs. 1,20,000.", "Not receiving any other government pension."]},
+    "documents_required": {"status": "conflict", "candidates": [
+      ["Aadhaar card", "Age proof (birth certificate / school leaving certificate / voter ID)", "Income certificate issued by Tehsildar", "Domicile certificate", "Bank passbook (first page)"],
+      ["Aadhaar card", "Age proof (birth certificate / school leaving certificate / voter ID)", "Income certificate issued by Tehsildar", "Bank passbook (first page)"]]},
+    "how_to_apply": {"status": "found", "value": [
+      "Apply online at the Social Justice portal or at the nearest Common Service Centre (CSC).",
+      "The application is verified by the Block Social Welfare Officer within 30 days."]},
+    "deadline": {"status": "conflict", "candidates": ["2026-06-30", "2026-03-31"]},
+    "official_link": {"status": "found", "value": "https://sje.vindhyachal.example/vsp"}
+  },
+  "SCH002": {
+    "scheme_name": {"status": "found", "value": "मुख्यमंत्री बालिका शिक्षा प्रोत्साहन योजना"},
+    "department": {"status": "found", "value": "स्कूल शिक्षा विभाग, विंध्याचल सरकार (काल्पनिक)", "accept": ["स्कूल शिक्षा विभाग"]},
+    "benefit_type": {"status": "found", "value": "cash"},
+    "benefit_amount": {"status": "found", "value": 10000},
+    "benefit_frequency": {"status": "found", "value": "one_time"},
+    "eligibility": {"status": "found", "value": [
+      "छात्रा विंध्याचल की मूल निवासी हो।", "सरकारी या अनुदान प्राप्त विद्यालय में कक्षा 9 में नियमित प्रवेश।",
+      "परिवार की वार्षिक आय ₹ २,५०,००० से अधिक न हो।"]},
+    "documents_required": {"status": "found", "value": ["आधार कार्ड", "मूल निवास प्रमाण पत्र", "आय प्रमाण पत्र", "विद्यालय प्रवेश प्रमाण पत्र", "बैंक पासबुक"]},
+    "how_to_apply": {"status": "found", "value": [
+      "विद्यालय के प्रधानाचार्य के माध्यम से आवेदन पत्र जमा करें।", "प्रधानाचार्य आवेदन को ज़िला शिक्षा अधिकारी को अग्रेषित करेंगे।"]},
+    "deadline": {"status": "found", "value": "No fixed deadline (open throughout the year)"},
+    "official_link": {"status": "not_found"}
+  },
+  "SCH003": {
+    "scheme_name": {"status": "found", "value": "निराधार विधवा अर्थसहाय्य योजना", "accept": ["Niradhar Vidhwa Arthsahayya Yojana"]},
+    "department": {"status": "found", "value": "महिला व बाल विकास विभाग", "accept": ["Women and Child Development Department"]},
+    "benefit_type": {"status": "found", "value": "cash"},
+    "benefit_amount": {"status": "conflict", "candidates": [1200, 1000]},
+    "benefit_frequency": {"status": "found", "value": "monthly"},
+    "eligibility": {"status": "found", "value": [
+      "अर्जदार विधवा असावी व वय १८ वर्षांपेक्षा जास्त असावे.", "कुटुंबाचे वार्षिक उत्पन्न ₹ ५०,००० पेक्षा कमी असावे."]},
+    "documents_required": {"status": "found", "value": ["आधार कार्ड", "पतीचा मृत्यू दाखला", "उत्पन्नाचा दाखला", "बँक पासबुक"]},
+    "how_to_apply": {"status": "found", "value": ["तहसील कार्यालयात विहित नमुन्यातील अर्ज सादर करावा."]},
+    "deadline": {"status": "found", "value": "2026-12-31"},
+    "official_link": {"status": "not_found"}
+  },
+  "SCH004": {
+    "scheme_name": {"status": "found", "value": "Matru Poshan Sahayata Yojana"},
+    "department": {"status": "found", "value": "Department of Women and Child Development"},
+    "benefit_type": {"status": "found", "value": "cash + in-kind"},
+    "benefit_amount": {"status": "found", "value": 5000},
+    "benefit_frequency": {"status": "found", "value": "instalments"},
+    "eligibility": {"status": "found", "value": [
+      "Pregnant women aged 19 years and above registered at an Anganwadi centre, for the first two live births."]},
+    "documents_required": {"status": "found", "value": ["Mother and Child Protection (MCP) card", "Aadhaar card", "bank passbook"]},
+    "how_to_apply": {"status": "found", "value": ["Register with the Anganwadi worker of your area."]},
+    "deadline": {"status": "found", "value": "Within 270 days of delivery"},
+    "official_link": {"status": "found", "value": "https://wcd.vindhyachal.example/mpsy"}
+  }
+}
