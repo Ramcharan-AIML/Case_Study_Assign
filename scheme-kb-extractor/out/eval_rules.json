@@ -1,10 +1,14 @@
 {
   "n_fields": 40,
+  "n_schemes": 4,
   "accuracy": 0.85,
   "dangerous_error_rate": 0.0,
   "safe_error_rate": 0.15,
   "high_stakes_accuracy": 0.75,
   "high_stakes_dangerous_rate": 0.0,
+  "conflict_recall": 0.75,
+  "n_conflicts": 4,
+  "grounding_rate": 1.0,
   "outcomes": {
     "correct": 29,
     "conflict_caught": 3,
@@ -73,6 +77,32 @@
       "safe_errors": 0
     }
   },
+  "per_doc_type": {
+    "Press note": {
+      "n": 10,
+      "accuracy": 1.0,
+      "dangerous": 0,
+      "safe_errors": 0
+    },
+    "Scanned PDF": {
+      "n": 10,
+      "accuracy": 0.4,
+      "dangerous": 0,
+      "safe_errors": 6
+    },
+    "Text PDF": {
+      "n": 10,
+      "accuracy": 1.0,
+      "dangerous": 0,
+      "safe_errors": 0
+    },
+    "Web page": {
+      "n": 10,
+      "accuracy": 1.0,
+      "dangerous": 0,
+      "safe_errors": 0
+    }
+  },
   "rows": [
     {
       "scheme_ref": "SCH001",
@@ -80,7 +110,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.95
+      "confidence": 0.95,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -88,7 +119,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.95
+      "confidence": 0.95,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -96,7 +128,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.8
+      "confidence": 0.8,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -104,7 +137,8 @@
       "outcome": "conflict_caught",
       "pred_status": "conflict",
       "gold_status": "conflict",
-      "confidence": 0.3
+      "confidence": 0.3,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -112,7 +146,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.9
+      "confidence": 0.9,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -120,7 +155,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.9
+      "confidence": 0.9,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -128,7 +164,8 @@
       "outcome": "conflict_caught",
       "pred_status": "conflict",
       "gold_status": "conflict",
-      "confidence": 0.3
+      "confidence": 0.3,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -136,7 +173,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.9
+      "confidence": 0.9,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -144,7 +182,8 @@
       "outcome": "conflict_caught",
       "pred_status": "conflict",
       "gold_status": "conflict",
-      "confidence": 0.3
+      "confidence": 0.3,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH001",
@@ -152,7 +191,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.95
+      "confidence": 0.95,
+      "doc_type": "Text PDF"
     },
     {
       "scheme_ref": "SCH002",
@@ -160,7 +200,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.8
+      "confidence": 0.8,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -168,7 +209,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.9
+      "confidence": 0.9,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -176,7 +218,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.75
+      "confidence": 0.75,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -184,7 +227,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.9
+      "confidence": 0.9,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -192,7 +236,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.85
+      "confidence": 0.85,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -200,7 +245,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.85
+      "confidence": 0.85,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -208,7 +254,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.85
+      "confidence": 0.85,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -216,7 +263,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.85
+      "confidence": 0.85,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -224,7 +272,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.8
+      "confidence": 0.8,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH002",
@@ -232,7 +281,8 @@
       "outcome": "correct_empty",
       "pred_status": "not_found",
       "gold_status": "not_found",
-      "confidence": 0.0
+      "confidence": 0.0,
+      "doc_type": "Web page"
     },
     {
       "scheme_ref": "SCH003",
@@ -240,7 +290,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.5
+      "confidence": 0.5,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -248,7 +299,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.5
+      "confidence": 0.5,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -256,7 +308,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.5
+      "confidence": 0.5,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -264,7 +317,8 @@
       "outcome": "missed",
       "pred_status": "not_found",
       "gold_status": "conflict",
-      "confidence": 0.0
+      "confidence": 0.0,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -272,7 +326,8 @@
       "outcome": "missed",
       "pred_status": "not_found",
       "gold_status": "found",
-      "confidence": 0.0
+      "confidence": 0.0,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -280,7 +335,8 @@
       "outcome": "missed",
       "pred_status": "not_found",
       "gold_status": "found",
-      "confidence": 0.0
+      "confidence": 0.0,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -288,7 +344,8 @@
       "outcome": "missed",
       "pred_status": "not_found",
       "gold_status": "found",
-      "confidence": 0.0
+      "confidence": 0.0,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -296,7 +353,8 @@
       "outcome": "missed",
       "pred_status": "not_found",
       "gold_status": "found",
-      "confidence": 0.0
+      "confidence": 0.0,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -304,7 +362,8 @@
       "outcome": "missed",
       "pred_status": "not_found",
       "gold_status": "found",
-      "confidence": 0.0
+      "confidence": 0.0,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH003",
@@ -312,7 +371,8 @@
       "outcome": "correct_empty",
       "pred_status": "not_found",
       "gold_status": "not_found",
-      "confidence": 0.0
+      "confidence": 0.0,
+      "doc_type": "Scanned PDF"
     },
     {
       "scheme_ref": "SCH004",
@@ -320,7 +380,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.95
+      "confidence": 0.95,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -328,7 +389,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.95
+      "confidence": 0.95,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -336,7 +398,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.8
+      "confidence": 0.8,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -344,7 +407,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.5
+      "confidence": 0.5,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -352,7 +416,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.5
+      "confidence": 0.5,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -360,7 +425,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.85
+      "confidence": 0.85,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -368,7 +434,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.85
+      "confidence": 0.85,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -376,7 +443,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.85
+      "confidence": 0.85,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -384,7 +452,8 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.75
+      "confidence": 0.75,
+      "doc_type": "Press note"
     },
     {
       "scheme_ref": "SCH004",
@@ -392,7 +461,53 @@
       "outcome": "correct",
       "pred_status": "found",
       "gold_status": "found",
-      "confidence": 0.5
+      "confidence": 0.5,
+      "doc_type": "Press note"
     }
-  ]
+  ],
+  "readiness": {
+    "ready": false,
+    "checks": [
+      {
+        "check": "Test set is big enough",
+        "metric": "n_schemes",
+        "rule": ">= 100",
+        "actual": 4,
+        "passed": false,
+        "why": "Need ~100 real, held-out schemes before trusting the numbers"
+      },
+      {
+        "check": "No dangerous errors on high-stakes fields",
+        "metric": "high_stakes_dangerous_rate",
+        "rule": "<= 0.01",
+        "actual": 0.0,
+        "passed": true,
+        "why": "Wrong money/date/document values that look right"
+      },
+      {
+        "check": "Every value has a real quote",
+        "metric": "grounding_rate",
+        "rule": ">= 1.0",
+        "actual": 1.0,
+        "passed": true,
+        "why": "Enforced by code; this is a regression check"
+      },
+      {
+        "check": "Conflicts are caught",
+        "metric": "conflict_recall",
+        "rule": ">= 0.95",
+        "actual": 0.75,
+        "passed": false,
+        "why": "Disagreements between sources must be surfaced"
+      },
+      {
+        "check": "Checking beats typing",
+        "metric": "accuracy",
+        "rule": ">= 0.8",
+        "actual": 0.85,
+        "passed": true,
+        "why": "Below this, reviewers would be faster typing from scratch"
+      }
+    ]
+  }
 }

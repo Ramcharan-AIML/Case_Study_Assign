@@ -1,115 +1,131 @@
-"""LLM extractor using Claude (Anthropic API).
+"""LLM extractor using Groq (free tier available at console.groq.com).
 
-Model: claude-opus-5-5 ($4 / $20 per million input / output tokens).
-One request per official source document. MyScheme listings are already
-structured, so they go through the rule-based mapper instead (cheaper and
-deterministic).
+Two open-weight models, both served by Groq:
+  - openai/gpt-oss-120b     reads the document text and fills the fields (text only)
+  - Llama 4 Scout (vision)  only for scanned pages: transcribes the image to text first
 
-The model is asked for exact quotes, which verify.py then checks against the
-source text. For a scanned PDF there is no text layer to check against, so the
-model also returns its transcription; quotes are checked against that, the
-confidence is capped, and the note says so. That check is weaker, and the
-README is explicit about it.
+Why the split: GPT-OSS cannot see images. Instead of guessing from a scan, we
+transcribe it with a vision model, then extract from that transcription.
+
+Every document is sent as numbered lines ("[page 1, line 9] ..."), so the model
+can cite a location and verify.py can check each quote word-for-word against
+the very same text. Model names can be overridden with environment variables
+because hosted model line-ups change.
 """
 from __future__ import annotations
 
 import base64
 import json
+import os
 
-import anthropic
+import pymupdf
+from pydantic import BaseModel, ValidationError
 
 from . import normalize as nz
 from .loaders import Document
 from .schema import FIELDS, LIST_FIELDS, Candidate, Evidence
 
-MODEL = "claude-opus-5-5"
-PRICE_IN, PRICE_OUT = 4.00, 20.00  # USD per million tokens
+TEXT_MODEL = os.getenv("SKB_GROQ_MODEL", "openai/gpt-oss-120b")
+VISION_MODEL = os.getenv("SKB_GROQ_VISION_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct")
+# Groq on-demand list prices in USD per million tokens (input, output), used only for the
+# cost estimate. The free tier costs nothing but is rate-limited. Check groq.com/pricing.
+PRICES = {TEXT_MODEL: (0.15, 0.60), VISION_MODEL: (0.11, 0.34)}
 SCANNED_CONF_CAP = 0.6
 
-SYSTEM = """You prepare a FIRST DRAFT of a government welfare scheme record. A researcher will review every field before it reaches field agents and citizens, so an empty field with a reason is far better than a plausible guess.
+SYSTEM = """You prepare a FIRST DRAFT of a government welfare scheme record. A researcher reviews every field before it reaches field agents and citizens, so an empty field with a reason is far better than a plausible guess.
 
-For each field return:
-- value: the value as stated in the document (keep the document's language; do not translate). null if the document does not state it.
-- quotes: the exact text, copied character-for-character from the document, that supports the value. For list fields, one quote per item. Never paraphrase inside a quote.
-- location: where the quote is (page number and section heading, e.g. "page 2, section 4. Documents Required").
-- note: short reason when value is null, or anything a reviewer must know (e.g. "amount was revised; earlier amount also mentioned", "relative deadline, no calendar date").
+The document is given as lines, each prefixed with its location in square brackets.
+
+Return ONLY a JSON object of this exact shape:
+{"fields": {"<field>": {"value": <string | list of strings | null>, "quotes": [<string>], "location": <string | null>, "note": <string | null>}}}
+with exactly these field keys: scheme_name, department, benefit_type, benefit_amount, benefit_frequency, eligibility, documents_required, how_to_apply, deadline, official_link.
+
+For each field:
+- value: as stated in the document, in the document's language (do not translate). null if not stated.
+- quotes: exact text copied character-for-character from the document lines (without the [location] prefix) that supports the value. One quote per item for list fields. Never paraphrase.
+- location: the bracketed location of the quote, e.g. "page 2, line 7".
+- note: short reason when value is null, or anything a reviewer must know.
 
 Field rules:
-- benefit_amount: the CURRENT benefit amount in rupees as written (e.g. "Rs. 1,500"). Ignore superseded/earlier amounts and income ceilings. If the document only says "as per norms", value is null.
+- benefit_amount: the CURRENT benefit in rupees as written (e.g. "Rs. 1,500"). Ignore earlier/superseded amounts and income ceilings. If the document only says "as per norms", value is null.
 - benefit_frequency: one of monthly, annual, one_time, instalments, or null.
 - benefit_type: one of cash, in-kind, cash + in-kind, or null.
-- deadline: the last date to apply as written. If applications are open all year, say so. If relative (e.g. "within 270 days of delivery"), give that phrase.
+- deadline: last date to apply as written; if applications are open all year say so; if relative (e.g. "within 270 days of delivery") give that phrase.
 - official_link: only a URL printed in the document. Never construct or recall a URL.
-- eligibility, documents_required, how_to_apply: lists of items as written.
-If the document is a scanned image, first transcribe all of its text into `transcription` exactly as printed (original script), then extract. Otherwise set transcription to null."""
+- eligibility, documents_required, how_to_apply: lists of items as written."""
 
-_FIELD_SCHEMA = {
-    "type": "object",
-    "properties": {
-        "value": {"anyOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}}, {"type": "null"}]},
-        "quotes": {"type": "array", "items": {"type": "string"}},
-        "location": {"anyOf": [{"type": "string"}, {"type": "null"}]},
-        "note": {"anyOf": [{"type": "string"}, {"type": "null"}]},
-    },
-    "required": ["value", "quotes", "location", "note"],
-    "additionalProperties": False,
-}
-OUTPUT_SCHEMA = {
-    "type": "object",
-    "properties": {
-        "transcription": {"anyOf": [{"type": "string"}, {"type": "null"}]},
-        "fields": {
-            "type": "object",
-            "properties": {f: _FIELD_SCHEMA for f in FIELDS},
-            "required": FIELDS,
-            "additionalProperties": False,
-        },
-    },
-    "required": ["transcription", "fields"],
-    "additionalProperties": False,
-}
+TRANSCRIBE_PROMPT = ("Transcribe ALL text on this scanned government document page exactly as printed, in its "
+                     "original script (do not translate), one printed line per output line. Output only the text.")
 
 
-def _content(doc: Document) -> list[dict]:
-    if doc.source.kind == "pdf":
-        b64 = base64.standard_b64encode(doc.raw_bytes).decode()
-        part = {"type": "document", "source": {"type": "base64", "media_type": "application/pdf", "data": b64}}
-    else:
-        # HTML/text: send the parsed lines with their locations, so quotes are checkable verbatim.
-        listing = "\n".join(f"[{l.location}] {l.text}" for l in doc.lines)
-        part = {"type": "text", "text": f"<document>\n{listing}\n</document>"}
-    return [part, {"type": "text", "text": f"Source: {doc.source.title}. Extract the scheme fields."}]
+class _Field(BaseModel):
+    value: str | list[str] | None = None
+    quotes: list[str] = []
+    location: str | None = None
+    note: str | None = None
 
 
-def call_model(doc: Document, client: anthropic.Anthropic | None = None) -> tuple[dict, dict]:
-    client = client or anthropic.Anthropic()
-    response = client.beta.messages.create(
-        model=MODEL,
-        max_tokens=16000,
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",
-        thinking={"type": "adaptive"},
-        output_config={"effort": "medium", "format": {"type": "json_schema", "schema": OUTPUT_SCHEMA}},
-        system=SYSTEM,
-        messages=[{"role": "user", "content": _content(doc)}],
-    )
-    if response.stop_reason == "refusal":
-        raise RuntimeError(f"Model declined {doc.source.source_ref}: {response.stop_details}")
-    text = next(b.text for b in response.content if b.type == "text")
-    usage = {"input_tokens": response.usage.input_tokens, "output_tokens": response.usage.output_tokens}
-    usage["usd"] = round(usage["input_tokens"] * PRICE_IN / 1e6 + usage["output_tokens"] * PRICE_OUT / 1e6, 4)
-    return json.loads(text), usage
+class _Output(BaseModel):
+    fields: dict[str, _Field]
 
 
-def to_candidates(doc: Document, raw: dict) -> tuple[dict, str]:
-    """Maps the model's JSON into candidates. Returns (results, text to verify quotes against)."""
-    s = doc.source
-    scanned = doc.needs_ocr
-    verify_text = (raw.get("transcription") or "") if scanned else doc.full_text
+def _client():
+    from groq import Groq  # imported lazily so offline mode never needs the SDK
+
+    return Groq()  # reads GROQ_API_KEY
+
+
+def _usage(model: str, resp) -> dict:
+    p_in, p_out = PRICES.get(model, (0.0, 0.0))
+    u = resp.usage
+    return {"model": model, "input_tokens": u.prompt_tokens, "output_tokens": u.completion_tokens,
+            "usd_if_paid": round(u.prompt_tokens * p_in / 1e6 + u.completion_tokens * p_out / 1e6, 5)}
+
+
+def transcribe_scan(doc: Document, client) -> tuple[list[str], list[dict]]:
+    """Scanned PDF -> lines '[scan page N, line i] text' via the vision model."""
+    lines, usage = [], []
+    with pymupdf.open(stream=doc.raw_bytes, filetype="pdf") as pdf:
+        for pno, page in enumerate(pdf, start=1):
+            png = page.get_pixmap(dpi=150).tobytes("png")
+            url = "data:image/png;base64," + base64.b64encode(png).decode()
+            resp = client.chat.completions.create(
+                model=VISION_MODEL, temperature=0,
+                messages=[{"role": "user", "content": [{"type": "text", "text": TRANSCRIBE_PROMPT},
+                                                       {"type": "image_url", "image_url": {"url": url}}]}])
+            usage.append(_usage(VISION_MODEL, resp))
+            text = resp.choices[0].message.content or ""
+            lines += [f"[scan page {pno}, line {i}] {t.strip()}"
+                      for i, t in enumerate(text.splitlines(), start=1) if t.strip()]
+    return lines, usage
+
+
+def call_model(numbered_lines: list[str], title: str, client) -> tuple[dict, dict]:
+    messages = [{"role": "system", "content": SYSTEM},
+                {"role": "user", "content": f"Source: {title}\n<document>\n" + "\n".join(numbered_lines) + "\n</document>"}]
+    for attempt in range(2):  # one retry if the JSON does not match the expected shape
+        resp = client.chat.completions.create(model=TEXT_MODEL, temperature=0, messages=messages,
+                                              response_format={"type": "json_object"})
+        content = resp.choices[0].message.content or ""
+        try:
+            parsed = _Output.model_validate_json(content)
+            missing = [f for f in FIELDS if f not in parsed.fields]
+            if missing:
+                raise ValueError(f"missing fields {missing}")
+            return {"fields": {f: parsed.fields[f].model_dump() for f in FIELDS}}, _usage(TEXT_MODEL, resp)
+        except (ValidationError, ValueError, json.JSONDecodeError) as e:
+            messages += [{"role": "assistant", "content": content},
+                         {"role": "user", "content": f"That JSON was invalid ({e}). Return the corrected JSON only."}]
+    raise RuntimeError(f"Model did not return valid JSON for {title}")
+
+
+def to_candidates(doc: Document, raw: dict) -> dict:
+    """Maps the model's JSON into candidates (quotes are checked later by verify.py)."""
+    s, scanned = doc.source, doc.needs_ocr
     results = {}
     for field in FIELDS:
         f = raw["fields"][field]
-        value, quotes = f["value"], [q for q in f["quotes"] if q.strip()]
+        value, quotes = f["value"], [q for q in f["quotes"] if q and q.strip()]
         if value in (None, "", []):
             results[field] = (None, f.get("note") or "Model found no value in this source.")
             continue
@@ -119,15 +135,14 @@ def to_candidates(doc: Document, raw: dict) -> tuple[dict, str]:
             continue
         evidence = [Evidence(quote=q, location=f.get("location") or "unspecified", source_ref=s.source_ref,
                              source_link=s.link, captured_at=s.captured_at) for q in quotes]
-        conf = 0.85
-        note = f.get("note")
+        conf, note = 0.85, f.get("note")
         if scanned:
             conf = SCANNED_CONF_CAP
-            note = ((note or "") + " Scanned source: quote checked against the model's own transcription, "
-                    "not an independent OCR. Check against the image.").strip()
+            note = ((note or "") + " Scanned source: quote checked against the vision model's transcription, "
+                    "not the image itself. Compare with the scan.").strip()
         results[field] = (Candidate(value=value, evidence=evidence, confidence=conf, source_ref=s.source_ref,
                                     authority=s.authority, note=note), None)
-    return results, verify_text
+    return results
 
 
 def _normalise(field: str, value):
@@ -146,13 +161,20 @@ def _normalise(field: str, value):
         dates = nz.find_dates(value)
         return (dates[0] if dates else (nz.relative_deadline(value) or value)), None
     if field == "benefit_frequency":
-        allowed = {"monthly", "annual", "one_time", "instalments"}
         v = value.strip().lower().replace("-", "_").replace(" ", "_")
-        return (v, None) if v in allowed else (nz.frequency(value)[0], None)
+        return (v, None) if v in {"monthly", "annual", "one_time", "instalments"} else (nz.frequency(value)[0], None)
     return value.strip(), None
 
 
-def extract(doc: Document, client: anthropic.Anthropic | None = None) -> tuple[dict, str, dict]:
-    raw, usage = call_model(doc, client)
-    results, verify_text = to_candidates(doc, raw)
-    return results, verify_text, usage
+def extract(doc: Document, client=None) -> tuple[dict, str, list[dict]]:
+    client = client or _client()
+    usage: list[dict] = []
+    if doc.needs_ocr:
+        numbered, usage = transcribe_scan(doc, client)
+    else:
+        numbered = [f"[{l.location}] {l.text}" for l in doc.lines]
+    # Quotes are verified against the text the model actually saw (minus the location prefixes).
+    verify_text = "\n".join(line.split("] ", 1)[1] if "] " in line else line for line in numbered)
+    raw, u = call_model(numbered, doc.source.title, client)
+    usage.append(u)
+    return to_candidates(doc, raw), verify_text, usage

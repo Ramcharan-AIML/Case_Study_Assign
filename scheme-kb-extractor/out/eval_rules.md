@@ -9,8 +9,29 @@ Fields checked: **40** across 4 schemes.
 | Safe error rate | 15% | Share left empty or over-flagged (costs reviewer time only) |
 | High-stakes accuracy | 75% | Accuracy on amount, frequency, deadline, documents and eligibility |
 | High-stakes dangerous rate | 0% | Must be ~0 before scaling |
+| Conflict recall | 75% | Of 4 real disagreements, how many were shown |
+| Grounding rate | 100% | Filled values whose quote really is in the source |
 
-## Per field
+## Ready to scale to 5,000 schemes? **NOT YET**
+
+| Check | Rule | Actual | Result |
+|---|---|---|---|
+| Test set is big enough | n_schemes >= 100 | 4 | FAIL |
+| No dangerous errors on high-stakes fields | high_stakes_dangerous_rate <= 0.01 | 0% | PASS |
+| Every value has a real quote | grounding_rate >= 1.0 | 100% | PASS |
+| Conflicts are caught | conflict_recall >= 0.95 | 75% | FAIL |
+| Checking beats typing | accuracy >= 0.8 | 85% | PASS |
+
+## By document type
+
+| Document type | Fields | Accuracy | Dangerous | Safe errors |
+|---|---|---|---|---|
+| Press note | 10 | 100% | 0 | 0 |
+| Scanned PDF | 10 | 40% | 0 | 6 |
+| Text PDF | 10 | 100% | 0 | 0 |
+| Web page | 10 | 100% | 0 | 0 |
+
+## By field
 
 | Field | n | Accuracy | Dangerous | Safe errors |
 |---|---|---|---|---|

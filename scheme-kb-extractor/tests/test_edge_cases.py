@@ -3,7 +3,6 @@ from pathlib import Path
 
 from skb import normalize as nz
 from skb.compare import values_equal
-from skb.extract_llm import to_candidates
 from skb.loaders import load
 from skb.pipeline import load_manifest, run
 from skb.reconcile import reconcile
@@ -84,21 +83,80 @@ def test_end_to_end_offline_run_has_no_dangerous_errors():
     assert result["dangerous_error_rate"] == 0
 
 
-# --- LLM path: hallucination guard (no API call; fake model output) ----------
+# --- Groq LLM path, with a fake Groq client (no API key, no network) ----------
+
+class _FakeGroq:
+    """Mimics groq.Groq().chat.completions.create and records what was sent."""
+
+    def __init__(self, replies):
+        self.replies, self.sent = list(replies), []
+        self.chat = self
+        self.completions = self
+
+    def create(self, **kwargs):
+        from types import SimpleNamespace as NS
+        self.sent.append(kwargs)
+        return NS(choices=[NS(message=NS(content=self.replies.pop(0)))], usage=NS(prompt_tokens=1000, completion_tokens=200))
+
+
+def _fields(**overrides):
+    import json
+    from skb.schema import FIELDS
+    empty = {"value": None, "quotes": [], "location": None, "note": "not stated"}
+    return json.dumps({"fields": {f: overrides.get(f, empty) for f in FIELDS}})
+
 
 def test_llm_invented_quote_is_dropped_by_grounding_check():
-    from skb import verify
+    from skb import extract_llm, verify
 
     doc = load(SOURCES["SRC-001-A"], DATA)
-    empty = {"value": None, "quotes": [], "location": None, "note": "not stated"}
-    raw = {"transcription": None, "fields": {f: dict(empty) for f in
-           ["scheme_name", "department", "benefit_type", "benefit_amount", "benefit_frequency",
-            "eligibility", "documents_required", "how_to_apply", "deadline", "official_link"]}}
-    raw["fields"]["benefit_amount"] = {"value": "Rs. 2,000", "quotes": ["Monthly pension of Rs. 2,000 per month"],
-                                       "location": "page 1", "note": None}  # invented
-    raw["fields"]["deadline"] = {"value": "30 June 2026", "location": "page 2", "note": None,
-                                 "quotes": ["Applications for the year 2026-27 must be submitted by 30 June 2026."]}
-    results, text = to_candidates(doc, raw)
+    reply = _fields(
+        benefit_amount={"value": "Rs. 2,000", "quotes": ["Monthly pension of Rs. 2,000 per month"],  # invented
+                        "location": "page 1, line 9", "note": None},
+        deadline={"value": "30 June 2026", "location": "page 2, line 10", "note": None,
+                  "quotes": ["6. Last Date: Applications for the year 2026-27 must be submitted by 30 June 2026."]})
+    results, text, usage = extract_llm.extract(doc, _FakeGroq([reply]))
     checked = verify.apply(results, text)
     assert checked["benefit_amount"][0] is None and "grounding check" in checked["benefit_amount"][1]
     assert checked["deadline"][0].value == "2026-06-30"
+    assert usage[0]["model"] == extract_llm.TEXT_MODEL
+
+
+def test_llm_bad_json_is_retried_once():
+    from skb import extract_llm
+
+    doc = load(SOURCES["SRC-004-A"], DATA)
+    fake = _FakeGroq(["not json at all", _fields()])
+    extract_llm.extract(doc, fake)
+    assert len(fake.sent) == 2 and "invalid" in fake.sent[1]["messages"][-1]["content"]
+
+
+def test_llm_scan_goes_through_vision_model_then_text_model():
+    from skb import extract_llm
+
+    doc = load(SOURCES["SRC-003-A"], DATA)
+    transcription = "लाभ: पात्र लाभार्थीस दरमहा ₹ १,२०० अर्थसहाय्य थेट बँक खात्यात जमा केले जाईल."
+    reply = _fields(benefit_amount={"value": "₹ १,२००", "quotes": [transcription], "location": "scan page 1, line 1", "note": None})
+    fake = _FakeGroq([transcription, reply])
+    results, text, _ = extract_llm.extract(doc, fake)
+    assert fake.sent[0]["model"] == extract_llm.VISION_MODEL and fake.sent[1]["model"] == extract_llm.TEXT_MODEL
+    cand = results["benefit_amount"][0]
+    assert cand.value == 1200 and cand.confidence == extract_llm.SCANNED_CONF_CAP
+
+
+# --- Feedback loop and readiness gate ----------------------------------------
+
+def test_reviewer_corrections_become_test_answers():
+    from skb.feedback import to_gold_entry
+
+    entry = to_gold_entry({"scheme_ref": "SCH004", "field": "documents_required", "decision": "corrected",
+                           "value": "MCP card; Aadhaar card; bank passbook; ration card"}, None)
+    assert entry["status"] == "found" and len(entry["value"]) == 4 and entry["origin"] == "reviewer"
+
+
+def test_readiness_gate_fails_on_a_tiny_test_set():
+    from skb.evaluate import readiness
+
+    result = {"n_schemes": 4, "high_stakes_dangerous_rate": 0.0, "grounding_rate": 1.0, "conflict_recall": 1.0, "accuracy": 0.9}
+    gate = readiness(result)
+    assert not gate["ready"] and [c["passed"] for c in gate["checks"]] == [False, True, True, True, True]

@@ -164,7 +164,11 @@ def _benefit(doc, sec) -> Result:
 
     btype, phrase = nz.benefit_type(joined)
     if btype:
-        ev_lines = [l for l, t in lines if nz.benefit_type(t)[0]]
+        ev_lines = []  # only the line(s) holding the wording that decided the type
+        for part in phrase.split(" … "):
+            hit = next((l for l, t in lines if part in t), None)
+            if hit and hit not in ev_lines:
+                ev_lines.append(hit)
         out["benefit_type"] = (_cand(doc, btype, [_ev(doc, l) for l in ev_lines], 0.75,
                                      f"Classified from wording: '{phrase}'."), None)
     else:
